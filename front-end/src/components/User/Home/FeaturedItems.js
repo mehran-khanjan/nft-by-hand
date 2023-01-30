@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
+import finger01 from '../../../assets/img/products/set01/01-finger.jpg';
 
 const FeaturedItems = () => {
     return (
@@ -32,7 +33,7 @@ const FeaturedItems = () => {
                             <div className="game">
                                 <div className="game__head">
                                     <div className="game__cover">
-                                        <img src="img/games/1.png" alt=""/>
+                                        <img src={finger01} alt=""/>
                                     </div>
 
                                     <div className="game__title">
@@ -58,16 +59,16 @@ const FeaturedItems = () => {
 
                                 <ul className="game__list">
                                     <li>
-                                        A <span>A</span>
+                                        Price <span className="required">5 BNB</span>
                                     </li>
                                     <li>
-                                        B <span className="required">B</span>
+                                        Blockchain <span className="required">Binance Chain</span>
                                     </li>
                                     <li>
-                                        C <span className="required">C</span>
+                                        Material <span className="required">Wood</span>
                                     </li>
                                     <li>
-                                        D <span className="process">D</span>
+                                        Status <span className="process">In Stock</span>
                                     </li>
                                 </ul>
 
