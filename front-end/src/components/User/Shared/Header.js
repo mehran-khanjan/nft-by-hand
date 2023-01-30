@@ -60,9 +60,9 @@ const Header = () => {
                                     {/*<li>*/}
                                     {/*    <NavLink to="/launchpads/list">Explore</NavLink>*/}
                                     {/*</li>*/}
-                                    {/*<li>*/}
-                                    {/*    <NavLink to="/launchpads/create">Create</NavLink>*/}
-                                    {/*</li>*/}
+                                    <li>
+                                        <NavLink to="/create">Create</NavLink>
+                                    </li>
                                     {/*<li>*/}
                                     {/*    <NavLink to="/profile">Profile</NavLink>*/}
                                     {/*</li>*/}

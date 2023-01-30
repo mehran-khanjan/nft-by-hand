@@ -13,6 +13,7 @@ import NoPage from "./pages/Shared/NoPage";
 import Header from "./components/User/Shared/Header";
 import RouteGuard from "./components/User/Shared/RouteGaurd";
 import Auth from "./components/User/Shared/Auth";
+import LaunchpadSingle1 from "./pages/User/LaunchpadSingle1";
 
 // Admin pages and components
 
@@ -39,7 +40,9 @@ function App() {
           <Route path="/" element={<Header/>}>
             <Route index element={<Home/>}/>
             <Route path="/explore" element={<Home/>}/>
-            <Route path="/assets/bnb/:tokenAddress" element={<Home/>}/>
+            <Route path="/create" element={<Create/>}/>
+            <Route path={`/assets/bnb/${process.env.REACT_APP_TOKEN_1_TX_HASH}`} element={<LaunchpadSingle1/>}/>
+            <Route path={`/assets/bnb/${process.env.REACT_APP_TOKEN_2_TX_HASH}`} element={<Home/>}/>
             <Route path="/about" element={<Home/>}/>
             <Route path="/contact" element={<Home/>}/>
             <Route path="/connect-wallet" element={<ConnectWallet/>}/>
