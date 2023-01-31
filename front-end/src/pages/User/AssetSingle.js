@@ -14,28 +14,42 @@ import littleImage1 from '../../assets/img/products/set01/10-1-main-163.jpg';
 import littleImage2 from '../../assets/img/products/set01/1-1-163.jpg';
 import littleImage3 from '../../assets/img/products/set01/2-1-163.jpg';
 import littleImage4 from '../../assets/img/products/set01/11-1-163.jpg';
-import BNBChain from '../../assets/img/blockchain/1.png';
 import {setter} from "../../utils/blockchainSetter";
 import NFTByHandContract from "../../blockchain/NFTByHandContract.json";
 import {ethers} from "ethers";
+import {singlePageItemsArray} from "../../utils/helpers";
 
-const LaunchpadSingle1 = () => {
-    const {launchpadContractAddress} = useParams();
+const AssetSingle = () => {
+    const {chainSymbol, contractAddress, tokenId} = useParams();
     const provider = web3Store(state => state.web3);
     const dispatch = useDispatch();
     const singleLaunchpad = useSelector(state => state.singleLaunchpadBlockchain.singleLaunchpad);
-    const [participantAmount, setParticipantAmount] = useState();
+    const [assetSingleItem, setAssetSingleItem] = useState();
 
-    // useEffect(() => {
-    //     if (launchpadContractAddress) {
-    //         dispatch(getSingleLaunchpadBlockchain({provider, launchpadContractAddress}))
-    //     }
-    // }, []);
-    //
+    useEffect(() => {
+        fetchSingleItemData(tokenId);
+
+        // if (launchpadContractAddress) {
+        //     dispatch(getSingleLaunchpadBlockchain({provider, launchpadContractAddress}))
+        // }
+    }, []);
+
+    const fetchSingleItemData = (tokenId) => {
+        const fetchedItem = singlePageItemsArray().filter((item) => {
+            return(
+                item.chainSymbol === chainSymbol &&
+                item.contractAddress === contractAddress &&
+                item.tokenId === tokenId
+            )
+        });
+        //console.log(fetchedItem);
+        setAssetSingleItem(fetchedItem);
+    }
+
     const onFormSubmitHandle = async (e) => {
         e.preventDefault();
 
-        if (provider) {
+        if (provider && assetSingleItem) {
             const {
                 receipt,
                 issuedEvents
@@ -44,7 +58,7 @@ const LaunchpadSingle1 = () => {
                 NFTByHandContract.abi,
                 provider,
                 'createMarketSale',
-                ['1', {value: ethers.utils.parseEther('1')}],
+                ['1', {value: ethers.utils.parseEther(assetSingleItem[0].price)}],
                 'unknown'
             );
 
@@ -56,10 +70,14 @@ const LaunchpadSingle1 = () => {
         }
     }
 
+    if (!assetSingleItem) {
+        return (<div>Loading...</div>)
+    }
+
     return (
         <React.Fragment>
             <Helmet>
-                <title>Backgammon & Chess Set | Superior Miniature Khatam Marquetry | NFT by Hand</title>
+                <title>{assetSingleItem[0].title} | NFT by Hand</title>
             </Helmet>
 
             {/*page head*/}
@@ -77,11 +95,11 @@ const LaunchpadSingle1 = () => {
                                     </li>
                                     <li className="breadcrumb__item">
                                         <NavLink to="/explore">
-                                            Assets
+                                            Explore
                                         </NavLink>
                                     </li>
                                     <li className="breadcrumb__item breadcrumb__item--active">
-                                        Backgammon & Chess Set | Superior Miniature Khatam Marquetry
+                                        {assetSingleItem[0].title}
                                     </li>
                                 </ul>
                             </div>
@@ -91,7 +109,7 @@ const LaunchpadSingle1 = () => {
                             <div className="col-12">
                                 <div className="section__title section__title--left section__title--page">
                                     <h1>
-                                        Backgammon & Chess Set | Superior Miniature Khatam Marquetry
+                                        {assetSingleItem[0].title}
                                     </h1>
                                 </div>
                             </div>
@@ -187,14 +205,7 @@ const LaunchpadSingle1 = () => {
                                 <div className="play__text" style={{height: '100%'}}>
 
                                     <p>
-                                        The Backgammon & Chess Set is made from Superior Miniature Khatam with Wood,
-                                        Brass & Camel Bone Inlaying Decorated with Flower & Bird Miniature on the top &
-                                        Traditional Multi colour Toranj design. The Khatamkari is Glazed & Coated for a
-                                        Shiny Long-Lasting Finish.
-                                    </p>
-
-                                    <p>
-                                        this is a physical nft
+                                        {assetSingleItem[0].description}
                                     </p>
 
                                 </div>
@@ -208,7 +219,7 @@ const LaunchpadSingle1 = () => {
 
                                 <div className="description__price" style={{width: '100%'}}>
                                     <h3>Current price</h3>
-                                    <p>5 BNB</p>
+                                    <p>{assetSingleItem[0].priceWithSymbol}</p>
                                     <form style={{width: '100%'}} onSubmit={onFormSubmitHandle}>
                                         <button type="submit" className="form__btn form__btn--small"
                                                 style={{width: '100%', backgroundColor: 'rgba(170,114,206,0.12)'}}>
@@ -345,4 +356,4 @@ const LaunchpadSingle1 = () => {
     )
 }
 
-export default LaunchpadSingle1;
+export default AssetSingle;

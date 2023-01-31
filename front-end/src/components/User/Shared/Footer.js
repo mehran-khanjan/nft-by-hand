@@ -14,8 +14,8 @@ const Footer = () => {
                             </div>
                             <p className="footer__tagline">
                                 NFT by Hand <br/>
-                                NFT Marketplace for handicrafts<br/>
-                                Physical NFT<br/>
+                                A marketplace for trading handicrafts<br/>
+                                with physical NFTs<br/>
                             </p>
                         </div>
 

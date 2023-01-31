@@ -71,9 +71,9 @@ const Header = () => {
                                         <NavLink to="/" onClick={onMenuItemClick}>Home</NavLink>
                                     </li>
 
-                                    {/*<li>*/}
-                                    {/*    <NavLink to="/launchpads/list">Explore</NavLink>*/}
-                                    {/*</li>*/}
+                                    <li>
+                                        <NavLink to="/explore" onClick={onMenuItemClick}>Explore</NavLink>
+                                    </li>
 
                                     {/*<li>*/}
                                     {/*    <NavLink to="/create" onClick={onMenuItemClick}>Create</NavLink>*/}

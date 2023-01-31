@@ -1,5 +1,6 @@
 import {Interface} from "ethers/lib/utils";
 import loadingImage from "../assets/img/loading.svg";
+import fingerImage01 from '../assets/img/products/set01/01-finger.jpg';
 
 
 export function formatAddress(value, length = 4) {
@@ -91,4 +92,42 @@ export const presaleStatus = (currentStatus) => {
         default:
             return 'Not Determined'
     }
+}
+
+const fingerProduct01 = {
+    fingerImage: fingerImage01,
+    title: 'Miniature Khatam Marquetry',
+    contractAddress: process.env.REACT_APP_CONTRACT_ADDRESS,
+    tokenId: '1',
+    description: 'The Backgammon & Chess Set is made from Superior Miniature Khatam with Wood, Brass & Camel Bone Inlaying Decorated with Flower & Bird Miniature on the top & Traditional Multi colour Toranj design. The Khatamkari is Glazed & Coated for a Shiny Long-Lasting Finish.',
+    priceWithSymbol: '5 BNB',
+    price: '5',
+    chain: 'Binance Chain',
+    chainSymbol: 'bnb',
+    material: 'Wood',
+    status: 'In Stock',
+};
+
+export const featuredItemsArray = () => {
+    return [fingerProduct01]
+}
+
+export const exploreListItemsArray = () => {
+    return [fingerProduct01]
+}
+
+export const singlePageItemsArray = () => {
+    return [
+        {
+            fingerImage: '',
+            title: 'Backgammon & Chess Set | Superior Miniature Khatam Marquetry',
+            contractAddress: fingerProduct01.contractAddress,
+            tokenId: fingerProduct01.tokenId,
+            description: fingerProduct01.description,
+            price: fingerProduct01.price,
+            chain: fingerProduct01.chain,
+            chainSymbol: fingerProduct01.chainSymbol,
+            status: fingerProduct01.status,
+        },
+    ]
 }

@@ -1,6 +1,9 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import finger01 from '../../../assets/img/products/set01/01-finger.jpg';
+import {featuredItemsArray} from "../../../utils/helpers";
+import AssetItem from "../Shared/AssetItem";
+const {v4: uuidv4} = require('uuid');
 
 const FeaturedItems = () => {
     return (
@@ -14,13 +17,13 @@ const FeaturedItems = () => {
                             <div className="section__title">
                                 <strong>Items</strong>
                                 <h2>
-                                    <a href="aggregator.html">
-                                        Featured Items
-                                    </a>
+                                    {/*<a href="aggregator.html">*/}
+                                    Featured Items
+                                    {/*</a>*/}
                                 </h2>
-                                <p>
-                                    a
-                                </p>
+                                {/*<p>*/}
+                                {/*    a*/}
+                                {/*</p>*/}
                             </div>
                         </div>
                         {/*end section title*/}
@@ -28,61 +31,25 @@ const FeaturedItems = () => {
 
                     <div className="row row--grid">
 
-                        {/*game*/}
-                        <div className="col-12 col-md-6 col-xl-4">
-                            <div className="game">
-                                <div className="game__head">
-                                    <div className="game__cover">
-                                        <img src={finger01} alt=""/>
-                                    </div>
-
-                                    <div className="game__title">
-                                        <h3 className="game__name">
-                                            <NavLink to={`/assets/bnb/${process.env.REACT_APP_TOKEN_1_TX_HASH}`}>
-                                                Miniature Khatam Marquetry
-                                            </NavLink>
-                                        </h3>
-                                        {/*<span className="game__blockchain">*/}
-                                        {/*    Blockchains*/}
-                                        {/*    <img src="img/blockchain/1.png" alt=""/>*/}
-                                        {/*    <img src="img/blockchain/2.png" alt=""/>*/}
-                                        {/*</span>*/}
-                                    </div>
-                                </div>
-
-                                <p className="game__description">
-                                    The Backgammon & Chess Set is made from Superior Miniature Khatam with Wood, Brass &
-                                    Camel Bone Inlaying Decorated with Flower & Bird Miniature on the top & Traditional
-                                    Multi colour Toranj design. The Khatamkari is Glazed & Coated for a Shiny
-                                    Long-Lasting Finish.
-                                </p>
-
-                                <ul className="game__list">
-                                    <li>
-                                        Price <span className="required">5 BNB</span>
-                                    </li>
-                                    <li>
-                                        Blockchain <span className="required">Binance Chain</span>
-                                    </li>
-                                    <li>
-                                        Material <span className="required">Wood</span>
-                                    </li>
-                                    <li>
-                                        Status <span className="process">In Stock</span>
-                                    </li>
-                                </ul>
-
-
-                                <NavLink to={`/assets/bnb/${process.env.REACT_APP_TOKEN_1_TX_HASH}`}
-                                         className="game__more">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                        <path
-                                            d="M17.92,11.62a1,1,0,0,0-.21-.33l-5-5a1,1,0,0,0-1.42,1.42L14.59,11H7a1,1,0,0,0,0,2h7.59l-3.3,3.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l5-5a1,1,0,0,0,.21-.33A1,1,0,0,0,17.92,11.62Z"/>
-                                    </svg>
-                                </NavLink>
-                            </div>
-                        </div>
-                        {/*end game*/}
+                        {
+                            featuredItemsArray().map((item) => {
+                                return (
+                                    <AssetItem
+                                        key={uuidv4()}
+                                        fingerImage={item.fingerImage}
+                                        contractAddress={item.contractAddress}
+                                        tokenId={item.tokenId}
+                                        title={item.title}
+                                        description={item.description}
+                                        price={item.priceWithSymbol}
+                                        chain={item.chain}
+                                        chainSymbol={item.chainSymbol}
+                                        material={item.material}
+                                        status={item.status}
+                                    />
+                                )
+                            })
+                        }
 
 
                     </div>

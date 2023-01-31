@@ -6,14 +6,13 @@ import './App.css';
 import Home from "./pages/User/Home";
 import Create from "./pages/User/Create";
 import ConnectWallet from "./pages/Shared/ConnectWallet";
-import LaunchpadsList from "./pages/User/LaunchpadsList";
-import LaunchpadSingle from "./pages/User/LaunchpadSingle";
+import AssetsList from "./pages/User/AssetsList";
 import Profile from "./pages/User/Profile";
 import NoPage from "./pages/Shared/NoPage";
 import Header from "./components/User/Shared/Header";
 import RouteGuard from "./components/User/Shared/RouteGaurd";
 import Auth from "./components/User/Shared/Auth";
-import LaunchpadSingle1 from "./pages/User/LaunchpadSingle1";
+import AssetSingle from "./pages/User/AssetSingle";
 
 // Admin pages and components
 
@@ -32,17 +31,16 @@ function App() {
           {/*  <Route path="/connect-wallet" element={<ConnectWallet/>}/>*/}
           {/*</Route>*/}
           {/*<Route element={<React.Fragment><RouteGuard/></React.Fragment>}>*/}
-          {/*  <Route path="/launchpads/list" element={<LaunchpadsList/>}/>*/}
-          {/*  <Route path="/launchpads/:launchpadContractAddress" element={<LaunchpadSingle/>}/>*/}
+          {/*  <Route path="/launchpads/list" element={<AssetsList/>}/>*/}
+          {/*  <Route path="/launchpads/:launchpadContractAddress" element={<AssetSingle/>}/>*/}
           {/*  <Route path="/launchpads/create" element={<Create/>}/>*/}
           {/*  <Route path="/profile" element={<Profile/>}/>*/}
           {/*</Route>*/}
           <Route path="/" element={<Header/>}>
             <Route index element={<Home/>}/>
-            <Route path="/explore" element={<Home/>}/>
+            <Route path="/explore" element={<AssetsList/>}/>
             <Route path="/create" element={<Create/>}/>
-            <Route path={`/assets/bnb/${process.env.REACT_APP_TOKEN_1_TX_HASH}`} element={<LaunchpadSingle1/>}/>
-            <Route path={`/assets/bnb/${process.env.REACT_APP_TOKEN_2_TX_HASH}`} element={<Home/>}/>
+            <Route path="/assets/:chainSymbol/:contractAddress/:tokenId" element={<AssetSingle/>}/>
             <Route path="/about" element={<Home/>}/>
             <Route path="/contact" element={<Home/>}/>
             <Route path="/connect-wallet" element={<ConnectWallet/>}/>

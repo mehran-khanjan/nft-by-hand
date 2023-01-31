@@ -8,11 +8,14 @@ const Home = () => {
         <React.Fragment>
             <Helmet>
                 <title>
-                    NFT Marketplace for handicrafts | NFT by Hand
+                    A Marketplace for trading handicrafts with physical NFTs | NFT by Hand
                 </title>
             </Helmet>
+
             <Hero/>
+
             <FeaturedItems/>
+
         </React.Fragment>
     )
 }
