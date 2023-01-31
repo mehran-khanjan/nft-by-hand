@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import AssetsListComp from "../../components/User/LaunchpadsList/AssetsListComp";
+import AssetsListComp from "../../components/User/AssetsList/AssetsListComp";
 import {Helmet} from "react-helmet";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllLaunchpadsBlockchain} from "../../store/LaunchpadThunk";

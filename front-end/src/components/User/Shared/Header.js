@@ -79,9 +79,17 @@ const Header = () => {
                                     {/*    <NavLink to="/create" onClick={onMenuItemClick}>Create</NavLink>*/}
                                     {/*</li>*/}
 
-                                    {/*<li>*/}
-                                    {/*    <NavLink to="/profile" onClick={onMenuItemClick}>Profile</NavLink>*/}
-                                    {/*</li>*/}
+                                    <li>
+                                        <NavLink to="/profile" onClick={onMenuItemClick}>Profile</NavLink>
+                                    </li>
+
+                                    <li>
+                                        <NavLink to="/contact" onClick={onMenuItemClick}>Contact</NavLink>
+                                    </li>
+
+                                    <li>
+                                        <NavLink to="/about" onClick={onMenuItemClick}>About</NavLink>
+                                    </li>
 
                                     {/*<li>*/}
                                     {/*    <a href="#" className="dropdown-toggle" onClick={onMoreButtonClick}>More*/}

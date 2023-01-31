@@ -14,7 +14,7 @@ const AssetItem = (props) => {
 
                         <div className="game__title">
                             <h3 className="game__name">
-                                <NavLink to={`/assets/${props.chainSymbol}/${props.contractAddress}/${props.tokenId}`}>
+                                <NavLink to={`/assets/${props.chainSymbol}/${props.contractAddress}/${props.tokenId}#top-asset-single`}>
                                     {props.title}
                                 </NavLink>
                             </h3>
@@ -42,7 +42,7 @@ const AssetItem = (props) => {
                     </ul>
 
 
-                    <NavLink to={`/assets/${props.chainSymbol}/${props.contractAddress}/${props.tokenId}`}
+                    <NavLink to={`/assets/${props.chainSymbol}/${props.contractAddress}/${props.tokenId}#top-asset-single`}
                              className="game__more">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path

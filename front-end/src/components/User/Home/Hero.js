@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 const Hero = () => {
     return (
@@ -16,8 +17,8 @@ const Hero = () => {
                                 </h1>
                                 <p className="hero__text">Let's connect real world to cryptocurrencies</p>
                                 <div className="hero__btns">
-                                    <a href="#" className="hero__btn"><span>Explore</span></a>
-                                    <a href="#" className="hero__btn hero__btn--nephrite"><span>Contact</span></a>
+                                    <Link to="explore" className="hero__btn"><span>Explore</span></Link>
+                                    <Link to="contact" className="hero__btn hero__btn--nephrite"><span>Contact</span></Link>
                                 </div>
 
                                 {/*bg animation*/}

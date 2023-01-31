@@ -40,9 +40,10 @@ function App() {
             <Route index element={<Home/>}/>
             <Route path="/explore" element={<AssetsList/>}/>
             <Route path="/create" element={<Create/>}/>
+            <Route path="/profile" element={<Profile/>}/>
             <Route path="/assets/:chainSymbol/:contractAddress/:tokenId" element={<AssetSingle/>}/>
-            <Route path="/about" element={<Home/>}/>
             <Route path="/contact" element={<Home/>}/>
+            <Route path="/about" element={<Home/>}/>
             <Route path="/connect-wallet" element={<ConnectWallet/>}/>
           </Route>
 

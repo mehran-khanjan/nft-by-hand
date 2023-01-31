@@ -1,8 +1,16 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import bigImage from "../../../assets/img/games/1-1-big.png";
+import {Link} from "react-router-dom";
+import {exploreListItemsArray} from "../../../utils/helpers";
+import AssetItem from "../Shared/AssetItem";
+import {v4 as uuidv4} from "uuid";
 
 const ProfileComponent = () => {
-    return(
+    useEffect(() => {
+
+    }, [])
+
+    return (
         <React.Fragment>
             {/*page head*/}
             <div className="section section--pb0 section--first">
@@ -12,8 +20,8 @@ const ProfileComponent = () => {
                             {/*breadcrumb*/}
                             <div className="col-12">
                                 <ul className="breadcrumb">
-                                    <li className="breadcrumb__item"><a href="index.html">Home</a></li>
-                                    <li className="breadcrumb__item"><a href="aggregator.html">Profile</a></li>
+                                    <li className="breadcrumb__item"><Link to="/">Home</Link></li>
+                                    <li className="breadcrumb__item">Profile</li>
                                 </ul>
                             </div>
                             {/*end breadcrumb*/}
@@ -42,38 +50,33 @@ const ProfileComponent = () => {
                         <div className="col-12">
                             {/*play*/}
                             <div className="play">
-                                <div className="play__btns">
+                                <div className="play__btns" style={{borderBottom: 'unset', paddingBottom: 'unset'}}>
                                     <a href="#" className="play__btn"
                                        style={{backgroundColor: 'rgba(170,114,206,0.12)', marginLeft: '5px'}}>
-                                        <span>Play</span>
+                                        <span>Bought NFTs</span>
                                     </a>
 
                                     <a href="#" className="play__btn" style={{marginLeft: '5px'}}>
-                                        <span>Details</span>
+                                        <span>Listed NFTs</span>
                                     </a>
 
-                                    <a href="#" className="play__btn" style={{marginLeft: '5px'}}>
-                                        <span>More</span>
-                                    </a>
                                 </div>
+                            </div>
+                            {/*end play*/}
+                        </div>
+                    </div>
+                </div>
 
-                                <div className="play__text" style={{height: '100%'}}>
+                <div className="container" style={{marginTop: '-20px'}}>
+                    <div className="row">
+                        <div className="col-12">
+                            {/*play*/}
+                            <div className="play">
+                                <div className="play__text"
+                                     style={{height: '100%', marginTop: 'unset', textAlign: 'center'}}>
                                     <p>
-                                        It is a long established fact that a reader will be distracted by the readable
-                                        content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                        that it has a more-or-less normal distribution of letters, as opposed to using
-                                        'Content here, content here', making it look like readable English.
-                                    </p>
-                                    <p>
-                                        Many desktop publishing packages and web page editors now use Lorem Ipsum as
-                                        their default model text, and a search for 'lorem ipsum' will uncover many web
-                                        sites still in their infancy. Various versions have evolved over the years,
-                                        sometimes by accident, sometimes on purpose (injected humour and the like).
-                                    </p>
-                                    <p>
-                                        There are many variations of passages of Lorem Ipsum available, but the majority
-                                        have suffered alteration in some form, by injected humour, or randomised words
-                                        which don't look even slightly believable.
+                                        No NFTs owned
+                                        No NFTs listed
                                     </p>
                                 </div>
                             </div>
@@ -81,6 +84,32 @@ const ProfileComponent = () => {
                         </div>
                     </div>
                 </div>
+
+                <div className="container" style={{marginTop: '-20px'}}>
+                    <div className="row row--grid">
+
+                        {
+                            exploreListItemsArray().map((item) => {
+                                return (
+                                    <AssetItem
+                                        key={uuidv4()}
+                                        fingerImage={item.fingerImage}
+                                        contractAddress={item.contractAddress}
+                                        tokenId={item.tokenId}
+                                        title={item.title}
+                                        description={item.description}
+                                        price={item.priceWithSymbol}
+                                        chain={item.chain}
+                                        chainSymbol={item.chainSymbol}
+                                        material={item.material}
+                                        status={item.status}
+                                    />
+                                )
+                            })
+                        }
+                    </div>
+                </div>
+
             </div>
             {/*end game details*/}
         </React.Fragment>

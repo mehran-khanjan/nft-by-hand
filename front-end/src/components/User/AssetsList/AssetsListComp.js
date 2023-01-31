@@ -9,7 +9,7 @@ const AssetsListComp = (props) => {
         <React.Fragment>
             <section className="section section--first">
                 {/*section head*/}
-                <div className="section__head">
+                <div className="section__head" style={{paddingBottom: '115px'}}>
                     <div className="container">
                         <div className="row">
                             {/*breadcrumb*/}
