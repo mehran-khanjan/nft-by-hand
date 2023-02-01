@@ -4,11 +4,19 @@ import {Link} from "react-router-dom";
 import {exploreListItemsArray} from "../../../utils/helpers";
 import AssetItem from "../Shared/AssetItem";
 import {v4 as uuidv4} from "uuid";
+import {useDispatch, useSelector} from "react-redux";
+import {getBoughtAssetBlockchain} from "../../../store/AssetThunk";
+import useWeb3Store from "../../../store/web3Store";
+import ProfileTabWrapper from "./ProfileTabWrapper";
 
 const ProfileComponent = () => {
-    useEffect(() => {
+    const [tabIndex, setTabIndex] = useState(1);
 
-    }, [])
+    const handleTabClick = (e, index) => {
+        e.preventDefault();
+
+        setTabIndex(index);
+    }
 
     return (
         <React.Fragment>
@@ -52,11 +60,14 @@ const ProfileComponent = () => {
                             <div className="play">
                                 <div className="play__btns" style={{borderBottom: 'unset', paddingBottom: 'unset'}}>
                                     <a href="#" className="play__btn"
+                                       onClick={e => handleTabClick(e, 1)}
                                        style={{backgroundColor: 'rgba(170,114,206,0.12)', marginLeft: '5px'}}>
                                         <span>Bought NFTs</span>
                                     </a>
 
-                                    <a href="#" className="play__btn" style={{marginLeft: '5px'}}>
+                                    <a href="#" className="play__btn"
+                                       onClick={e => handleTabClick(e, 2)}
+                                       style={{marginLeft: '5px'}}>
                                         <span>Listed NFTs</span>
                                     </a>
 
@@ -67,48 +78,7 @@ const ProfileComponent = () => {
                     </div>
                 </div>
 
-                <div className="container" style={{marginTop: '-20px'}}>
-                    <div className="row">
-                        <div className="col-12">
-                            {/*play*/}
-                            <div className="play">
-                                <div className="play__text"
-                                     style={{height: '100%', marginTop: 'unset', textAlign: 'center'}}>
-                                    <p>
-                                        No NFTs owned
-                                        No NFTs listed
-                                    </p>
-                                </div>
-                            </div>
-                            {/*end play*/}
-                        </div>
-                    </div>
-                </div>
-
-                <div className="container" style={{marginTop: '-20px'}}>
-                    <div className="row row--grid">
-
-                        {
-                            exploreListItemsArray().map((item) => {
-                                return (
-                                    <AssetItem
-                                        key={uuidv4()}
-                                        fingerImage={item.fingerImage}
-                                        contractAddress={item.contractAddress}
-                                        tokenId={item.tokenId}
-                                        title={item.title}
-                                        description={item.description}
-                                        price={item.priceWithSymbol}
-                                        chain={item.chain}
-                                        chainSymbol={item.chainSymbol}
-                                        material={item.material}
-                                        status={item.status}
-                                    />
-                                )
-                            })
-                        }
-                    </div>
-                </div>
+                <ProfileTabWrapper tabIndex={tabIndex}/>
 
             </div>
             {/*end game details*/}

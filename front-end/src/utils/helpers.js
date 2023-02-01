@@ -144,7 +144,7 @@ export const singlePageItemsArray = () => {
                 littleImage3Product01,
                 littleImage4Product01
             ],
-            title: 'Backgammon & Chess Set | Superior Miniature Khatam Marquetry',
+            title: 'Backgammon & Chess Set | Miniature Khatam Marquetry',
             contractAddress: fingerProduct01.contractAddress,
             tokenId: fingerProduct01.tokenId,
             tokenStandard: 'ERC-721',

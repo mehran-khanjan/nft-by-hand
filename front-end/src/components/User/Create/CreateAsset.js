@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import SectionTitle from "./SectionTitle";
 import useWeb3Store from "../../../store/web3Store";
 import {useDispatch, useSelector} from "react-redux";
 import {loadingSweetAlertOptions} from "../../../utils/helpers";
@@ -27,7 +26,7 @@ const client = ipfsHttpClient({
     },
 });
 
-const CreateNFT = () => {
+const CreateAsset = () => {
     const [tokenContractAddress, setTokenContractAddress] = useState();
     const provider = useWeb3Store(state => state.web3);
     const publicAddress = useWeb3Store(state => state.publicAddress);
@@ -80,15 +79,15 @@ const CreateNFT = () => {
         const price = e.target.price.value;
         const description = e.target.description.value;
 
-        console.log(provider);
+        //console.log(provider);
 
         if (provider) {
-            const fileURL = await uploadToIPFS(fileUpload);
+            // const fileURL = await uploadToIPFS(fileUpload);
 
             const data = JSON.stringify({
-                title,
+                name: title,
                 description,
-                image: fileURL
+                image: 'fileURL'
             });
             console.log('data object', data);
             const finalData = await uploadToIPFS(data);
@@ -192,7 +191,8 @@ const CreateNFT = () => {
                                             <label htmlFor="fileUpload" className="form__label">
                                                 File
                                             </label>
-                                            <input id="fileUpload" type="file" name="fileUpload" className=""/>
+                                            <input id="fileUpload" type="file" name="fileUpload" className=""
+                                            style={{color: 'white'}}/>
                                         </div>
                                     </div>
 
@@ -250,4 +250,4 @@ const CreateNFT = () => {
     )
 }
 
-export default CreateNFT;
+export default CreateAsset;

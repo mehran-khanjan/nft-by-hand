@@ -150,6 +150,16 @@ const buyLaunchpadSlice = createSlice({
     }
 })
 
+const fetchProfileAssetBlockchainSlice = createSlice({
+    name: 'fetchProfileAssetBlockchain',
+    initialState: {profileAsset: [[null]]},
+    reducers: {
+        setProfileAsset(state, action) {
+            state.profileAsset = action.payload;
+        }
+    }
+});
+
 const ReduxStore = configureStore({
     reducer: {
         auth: authenticationSlice.reducer,
@@ -162,8 +172,22 @@ const ReduxStore = configureStore({
         checkTokenContractValidity: checkTokenContractValiditySlice.reducer,
         createLaunchpadBlockchain: createLaunchpadBlockchainSlice.reducer,
         launchpadsListBlockchain: launchpadsListBlockchainSlice.reducer,
-        singleLaunchpadBlockchain: singleLaunchpadBlockchainSlice.reducer
-    }
+        singleLaunchpadBlockchain: singleLaunchpadBlockchainSlice.reducer,
+        fetchProfileAssetBlockchain: fetchProfileAssetBlockchainSlice.reducer
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                // Ignore these action types
+                // To get action type, use this code
+                // console.log(fetchProfileAssetBlockchainSlice.actions.setBoughtAsset.toString())
+                ignoredActions: ['fetchProfileAssetBlockchain/setProfileAsset'],
+                // Ignore these field paths in all actions
+                ignoredActionPaths: ['fetchProfileAssetBlockchain.profileAsset'],
+                // Ignore these paths in the state
+                ignoredPaths: ['fetchProfileAssetBlockchain.profileAsset'],
+            },
+        }),
 });
 
 export const authActions = authenticationSlice.actions;
@@ -177,5 +201,6 @@ export const checkTokenContractValidityActions = checkTokenContractValiditySlice
 export const createLaunchpadBlockchainActions = createLaunchpadBlockchainSlice.actions;
 export const launchpadsListBlockchainActions = launchpadsListBlockchainSlice.actions;
 export const singleLaunchpadBlockchainActions = singleLaunchpadBlockchainSlice.actions;
+export const fetchProfileAssetBlockchainActions = fetchProfileAssetBlockchainSlice.actions;
 
 export default ReduxStore;

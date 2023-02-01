@@ -1,10 +1,10 @@
 import React from 'react';
-import CreateNFT from "../../components/User/Create/CreateNFT";
+import CreateAsset from "../../components/User/Create/CreateAsset";
 
 const Create = () => {
     return(
         <React.Fragment>
-            <CreateNFT/>
+            <CreateAsset/>
         </React.Fragment>
     )
 }

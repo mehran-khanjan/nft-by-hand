@@ -12,3 +12,17 @@
 
 
 اضافه کردن اسلایدر split برای roadmap
+
+
+اضافه کردن customer reviews که در صفحه درباره ما است
+
+
+اضافه کردن مشاهده عکس در سایز بزرگ که در خود قالب موجوده
+
+
+با این سایت سرعت سایت رو چک کردم ، میگه تا ثانیه 3.6 فقط صفحه سفید نشون میده
+https://www.webpagetest.org
+میتونیم از این استفاده کنیم ولی بازم راه حل اصلی نیست
+https://medium.com/front-end-weekly/react-user-experience-tactics-placeholder-loading-content-fb734da0f9ae
+این هم خونده بشه
+https://stackoverflow.com/questions/71018743/what-is-an-acceptable-render-time-for-a-react-app
