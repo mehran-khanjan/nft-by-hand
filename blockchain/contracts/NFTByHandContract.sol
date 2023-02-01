@@ -19,6 +19,7 @@ contract NFTByHandContract is ERC721URIStorage {
 
     struct MarketItem {
         uint256 tokenId;
+        string tokenURI;
         address payable seller;
         address payable owner;
         uint256 price;
@@ -27,6 +28,7 @@ contract NFTByHandContract is ERC721URIStorage {
 
     event MarketItemCreated (
         uint256 indexed tokenId,
+        string tokenURI,
         address seller,
         address owner,
         uint256 price,
@@ -56,12 +58,13 @@ contract NFTByHandContract is ERC721URIStorage {
 
         _mint(msg.sender, newTokenId);
         _setTokenURI(newTokenId, tokenURI);
-        createMarketItem(newTokenId, price);
+        createMarketItem(newTokenId, tokenURI, price);
         return newTokenId;
     }
 
     function createMarketItem(
         uint256 tokenId,
+        string memory tokenURI,
         uint256 price
     ) private {
         require(price > 0, "Price must be at least 1 wei");
@@ -69,6 +72,7 @@ contract NFTByHandContract is ERC721URIStorage {
 
         idToMarketItem[tokenId] =  MarketItem(
             tokenId,
+            tokenURI,
             payable(msg.sender),
             payable(address(this)),
             price,
@@ -78,6 +82,7 @@ contract NFTByHandContract is ERC721URIStorage {
         _transfer(msg.sender, address(this), tokenId);
         emit MarketItemCreated(
             tokenId,
+            tokenURI,
             msg.sender,
             address(this),
             price,
