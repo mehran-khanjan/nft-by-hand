@@ -82,12 +82,12 @@ const CreateAsset = () => {
         //console.log(provider);
 
         if (provider) {
-            // const fileURL = await uploadToIPFS(fileUpload);
+            const fileURL = await uploadToIPFS(fileUpload);
 
             const data = JSON.stringify({
                 name: title,
                 description,
-                image: 'fileURL'
+                image: fileURL
             });
             console.log('data object', data);
             const finalData = await uploadToIPFS(data);

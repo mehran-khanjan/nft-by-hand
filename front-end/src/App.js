@@ -6,7 +6,7 @@ import './App.css';
 import Home from "./pages/User/Home";
 import Create from "./pages/User/Create";
 import ConnectWallet from "./pages/Shared/ConnectWallet";
-import AssetsList from "./pages/User/AssetsList";
+import Explore from "./pages/User/Explore";
 import Profile from "./pages/User/Profile";
 import NoPage from "./pages/Shared/NoPage";
 import Header from "./components/User/Shared/Header";
@@ -31,14 +31,14 @@ function App() {
           {/*  <Route path="/connect-wallet" element={<ConnectWallet/>}/>*/}
           {/*</Route>*/}
           {/*<Route element={<React.Fragment><RouteGuard/></React.Fragment>}>*/}
-          {/*  <Route path="/launchpads/list" element={<AssetsList/>}/>*/}
+          {/*  <Route path="/launchpads/list" element={<Explore/>}/>*/}
           {/*  <Route path="/launchpads/:launchpadContractAddress" element={<AssetSingle/>}/>*/}
           {/*  <Route path="/launchpads/create" element={<Create/>}/>*/}
           {/*  <Route path="/profile" element={<Profile/>}/>*/}
           {/*</Route>*/}
           <Route path="/" element={<Header/>}>
             <Route index element={<Home/>}/>
-            <Route path="/explore" element={<AssetsList/>}/>
+            <Route path="/explore" element={<Explore/>}/>
             <Route path="/create" element={<Create/>}/>
             <Route path="/profile" element={<Profile/>}/>
             <Route path="/assets/:chainSymbol/:contractAddress/:tokenId" element={<AssetSingle/>}/>

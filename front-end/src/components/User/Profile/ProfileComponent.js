@@ -11,9 +11,19 @@ import ProfileTabWrapper from "./ProfileTabWrapper";
 
 const ProfileComponent = () => {
     const [tabIndex, setTabIndex] = useState(1);
+    const [tabClassesOne, setTabClassesOne] = useState('play__btn background-color-btn');
+    const [tabClassesTwo, setTabClassesTwo] = useState('play__btn');
 
     const handleTabClick = (e, index) => {
         e.preventDefault();
+
+        if (index === 1) {
+            setTabClassesOne('play__btn background-color-btn');
+            setTabClassesTwo('play__btn');
+        } else if (index === 2) {
+            setTabClassesOne('play__btn');
+            setTabClassesTwo('play__btn background-color-btn');
+        }
 
         setTabIndex(index);
     }
@@ -59,13 +69,13 @@ const ProfileComponent = () => {
                             {/*play*/}
                             <div className="play">
                                 <div className="play__btns" style={{borderBottom: 'unset', paddingBottom: 'unset'}}>
-                                    <a href="#" className="play__btn"
+                                    <a href="#" className={tabClassesOne}
                                        onClick={e => handleTabClick(e, 1)}
-                                       style={{backgroundColor: 'rgba(170,114,206,0.12)', marginLeft: '5px'}}>
+                                       style={{marginLeft: '5px'}}>
                                         <span>Bought NFTs</span>
                                     </a>
 
-                                    <a href="#" className="play__btn"
+                                    <a href="#" className={tabClassesTwo}
                                        onClick={e => handleTabClick(e, 2)}
                                        style={{marginLeft: '5px'}}>
                                         <span>Listed NFTs</span>

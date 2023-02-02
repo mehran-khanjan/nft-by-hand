@@ -2,12 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {NavLink, useParams} from "react-router-dom";
 import {Helmet} from "react-helmet";
 import {useDispatch, useSelector} from "react-redux";
-import {getSingleLaunchpadBlockchain, launchpadParticipateBlockchain} from "../../store/LaunchpadThunk";
 import web3Store from "../../store/web3Store";
 import {setter} from "../../utils/blockchainSetter";
 import NFTByHandContract from "../../blockchain/NFTByHandContract.json";
 import {ethers} from "ethers";
-import {formatAddress, singlePageItemsArray} from "../../utils/helpers";
+import {fetchAssetsArray, formatAddress} from "../../utils/helpers";
 import {Navigate} from 'react-router-dom';
 
 const {v4: uuidv4} = require('uuid');
@@ -29,7 +28,7 @@ const AssetSingle = () => {
     }, []);
 
     const fetchSingleItemData = (tokenId) => {
-        const fetchedItem = singlePageItemsArray().filter((item) => {
+        const fetchedItem = fetchAssetsArray().filter((item) => {
             return (
                 item.chainSymbol === chainSymbol &&
                 item.contractAddress === contractAddress &&

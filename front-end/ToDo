@@ -26,3 +26,7 @@ https://www.webpagetest.org
 https://medium.com/front-end-weekly/react-user-experience-tactics-placeholder-loading-content-fb734da0f9ae
 این هم خونده بشه
 https://stackoverflow.com/questions/71018743/what-is-an-acceptable-render-time-for-a-react-app
+
+
+وقتی روی عکس ها کلیک میکنیم ، عکس بزرگ با فاصله زمانی لود میشود
+بهتر است یک لودر نشان دهیم

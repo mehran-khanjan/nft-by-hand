@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import {exploreListItemsArray} from "../../../utils/helpers";
+import React, {useEffect, useState} from 'react';
+import {exploreListItemsArray, fetchAssetsArray} from "../../../utils/helpers";
 import AssetItem from "../Shared/AssetItem";
 import {v4 as uuidv4} from "uuid";
 import useWeb3Store from "../../../store/web3Store";
@@ -9,11 +9,34 @@ import {getProfileAssetBlockchain} from "../../../store/AssetThunk";
 const ProfileTabContentListedAsset = () => {
     const provider = useWeb3Store(state => state.web3);
     const dispatch = useDispatch();
-    const listedAssets = useSelector(state => state.fetchProfileAssetBlockchain.profileAsset);
+    const fetchListedAssets = useSelector(state => state.fetchProfileAssetBlockchain.profileAsset);
+    const [listedAssets, setListedAssets] = useState([null])
 
     useEffect(() => {
         dispatch(getProfileAssetBlockchain({provider, method: 'fetchItemsListed'}))
     }, []);
+
+    useEffect(() => {
+        if (fetchListedAssets[0] !== null) {
+            console.log(fetchListedAssets)
+
+            let finalArray = []
+            fetchListedAssets.map((arrItem) => {
+                const fetchedItem = fetchAssetsArray().filter((item) => {
+                    return (
+                        item.chainSymbol === 'bnb' &&
+                        item.contractAddress === process.env.REACT_APP_CONTRACT_ADDRESS &&
+                        item.tokenId === parseInt(arrItem[0].toString)
+                    )
+                });
+                finalArray.concat(fetchedItem);
+
+                //console.log(fetchedItem);
+            })
+
+            setListedAssets(finalArray);
+        }
+    }, [fetchListedAssets]);
 
     return(
         <React.Fragment>
@@ -48,7 +71,7 @@ const ProfileTabContentListedAsset = () => {
                     <div className="row row--grid">
 
                         {
-                            exploreListItemsArray().map((item) => {
+                            fetchAssetsArray().map((item) => {
                                 return (
                                     <AssetItem
                                         key={uuidv4()}

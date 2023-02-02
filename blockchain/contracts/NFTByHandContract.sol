@@ -104,6 +104,19 @@ contract NFTByHandContract is ERC721URIStorage {
         _transfer(msg.sender, address(this), tokenId);
     }
 
+    /* allow the owner of the token to change the price */
+    function updatePrice(uint256 tokenId, uint256 price) public {
+        require(idToMarketItem[tokenId].owner == msg.sender, "Only item owner can perform this operation");
+        idToMarketItem[tokenId].price = price;
+    }
+
+    /* allow the owner of the token to change the URI */
+    function updateTokenURI(uint256 tokenId, string memory tokenURI) public {
+        require(idToMarketItem[tokenId].owner == msg.sender, "Only item owner can perform this operation");
+        _setTokenURI(tokenId, tokenURI);
+        idToMarketItem[tokenId].tokenURI = tokenURI;
+    }
+
     /* Creates the sale of a marketplace item */
     /* Transfers ownership of the item, as well as funds between parties */
     function createMarketSale(

@@ -1,10 +1,10 @@
 import React from 'react';
-import {exploreListItemsArray} from "../../../utils/helpers";
 import AssetItem from "../Shared/AssetItem";
 import {Link} from "react-router-dom";
+import {fetchAssetsArray} from "../../../utils/helpers";
 const {v4: uuidv4} = require('uuid');
 
-const AssetsListComp = (props) => {
+const ExploreComp = (props) => {
     return (
         <React.Fragment>
             <section className="section section--first">
@@ -42,7 +42,7 @@ const AssetsListComp = (props) => {
                     <div className="row row--grid">
 
                         {
-                            exploreListItemsArray().map((item) => {
+                            fetchAssetsArray().map((item) => {
                                 return (
                                     <AssetItem
                                         key={uuidv4()}
@@ -71,4 +71,4 @@ const AssetsListComp = (props) => {
     )
 }
 
-export default AssetsListComp;
+export default ExploreComp;

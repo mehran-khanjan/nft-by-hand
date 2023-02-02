@@ -1,8 +1,8 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import finger01 from '../../../assets/img/products/set01/01-finger.jpg';
-import {featuredItemsArray} from "../../../utils/helpers";
 import AssetItem from "../Shared/AssetItem";
+import {fetchAssetsArray} from "../../../utils/helpers";
 const {v4: uuidv4} = require('uuid');
 
 const FeaturedItems = () => {
@@ -32,7 +32,7 @@ const FeaturedItems = () => {
                     <div className="row row--grid">
 
                         {
-                            featuredItemsArray().map((item) => {
+                            fetchAssetsArray().map((item) => {
                                 return (
                                     <AssetItem
                                         key={uuidv4()}
