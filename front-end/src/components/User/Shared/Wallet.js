@@ -101,7 +101,7 @@ const Wallet = (props) => {
                 setNetworkId(chainId);
 
                 if (props.prevRoute) {
-                    console.log('aa', props.prevRoute);
+                    //console.log('aa', props.prevRoute);
                     return navigate(props.prevRoute);
                 }
 

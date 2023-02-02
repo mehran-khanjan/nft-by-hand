@@ -17,6 +17,7 @@ const ProfileTabContentListedAsset = () => {
     }, []);
 
     useEffect(() => {
+
         if (fetchListedAssets[0] && !(Object.is(fetchListedAssets[0][0], null))) {
             let finalArray = []
             fetchListedAssets.map((arrItem) => {
@@ -40,7 +41,22 @@ const ProfileTabContentListedAsset = () => {
         <React.Fragment>
             {/*Loading state*/}
             {listedAssets && listedAssets[0] === null &&
-                <div style={{color: 'white'}}>Loading...</div>
+                <div className="container" style={{marginTop: '-20px'}}>
+                    <div className="row">
+                        <div className="col-12">
+                            {/*play*/}
+                            <div className="play">
+                                <div className="play__text"
+                                     style={{height: '100%', marginTop: 'unset', textAlign: 'center'}}>
+                                    <p>
+                                        Loading...
+                                    </p>
+                                </div>
+                            </div>
+                            {/*end play*/}
+                        </div>
+                    </div>
+                </div>
             }
 
             {/*No asset exist state*/}
@@ -69,7 +85,7 @@ const ProfileTabContentListedAsset = () => {
                     <div className="row row--grid">
 
                         {
-                            fetchAssetsArray().map((item) => {
+                            listedAssets.map((item) => {
                                 return (
                                     <AssetItem
                                         key={uuidv4()}

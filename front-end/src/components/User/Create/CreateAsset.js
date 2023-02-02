@@ -107,12 +107,12 @@ const CreateAsset = () => {
                     provider,
                     'createToken',
                     // [finalData, finalPrice],
-                    ['https://nftbyhand.com/p01.json', finalPrice],
+                    ['https://nftbyhand.com/p03.json', finalPrice],
                     'MarketItemCreated'
                 );
 
-            console.log('issued events', issuedEvents);
-            console.log('receipt', receipt);
+            // console.log('issued events', issuedEvents);
+            // console.log('receipt', receipt);
 
 
             /* next, create the item */
@@ -127,24 +127,6 @@ const CreateAsset = () => {
         } else {
             console.log('Connect Wallet first!');
         }
-    }
-
-    const handleFormSubmission = async (e) => {
-        e.preventDefault();
-
-        mySweetAlert.fire(loadingSweetAlertOptions);
-
-        if (provider) {
-            // if (!isUpdated) {
-            // add some codes
-            // } else {
-            // return navigate(`/launchpads/create/${networkId}/${tokenContractAddress}/add-more-details`);
-            // }
-        } else {
-            console.log('connect wallet first');
-        }
-
-        mySweetAlert.close();
     }
 
     return (

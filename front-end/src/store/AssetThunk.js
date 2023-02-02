@@ -14,8 +14,8 @@ export const buyAssetBlockchain = ({provider, tokenId, price}) => {
     return async (dispatch) => {
         mySweetAlert.fire(loadingSweetAlertOptions);
 
-        console.log('token Id is: ', tokenId);
-        console.log('price is: ', price);
+        //console.log('token Id is: ', tokenId);
+        //console.log('price is: ', price);
 
         try {
             const {receipt, issuedEvents} = await setter(
@@ -28,7 +28,7 @@ export const buyAssetBlockchain = ({provider, tokenId, price}) => {
             );
 
             const sweetAlertOptions = successSweetAlertOptions({
-                text: 'You bought this physical NFT. Please contact us to receive your asset.'
+                text: 'You bought this physical NFT. Check your wallet for the NFT. Please contact us to receive your physical asset.'
             });
             mySweetAlert.fire(sweetAlertOptions);
 
