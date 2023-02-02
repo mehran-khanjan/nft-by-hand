@@ -109,7 +109,7 @@ const Header = () => {
                                 </ul>
                                 {/*end navigation*/}
 
-                                <Wallet/>
+                                <Wallet prevRoute={null}/>
 
                             </div>
                         </div>

@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import {ethers} from "ethers";
 import useWeb3Store from "../../../store/web3Store";
+import {useNavigate} from 'react-router-dom';
 
-const Wallet = () => {
+const Wallet = (props) => {
     const setProvider = useWeb3Store(state => state.setProvider);
     const setPublicAddress = useWeb3Store(state => state.setPublicAddress);
     const setNetworkId = useWeb3Store(state => state.setNetworkId);
     const publicAddress = useWeb3Store(state => state.publicAddress);
     const [finalPublicAddress, setFinalPublicAddress] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (publicAddress) {
@@ -33,6 +35,11 @@ const Wallet = () => {
 
         const {chainId} = await provider.getNetwork();
         setNetworkId(chainId);
+
+        if (props.prevRoute) {
+            console.log('aa', props.prevRoute);
+            return navigate(props.prevRoute);
+        }
     }
 
     return(

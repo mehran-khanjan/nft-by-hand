@@ -82,15 +82,15 @@ const CreateAsset = () => {
         //console.log(provider);
 
         if (provider) {
-            const fileURL = await uploadToIPFS(fileUpload);
+            // const fileURL = await uploadToIPFS(fileUpload);
 
-            const data = JSON.stringify({
-                name: title,
-                description,
-                image: fileURL
-            });
-            console.log('data object', data);
-            const finalData = await uploadToIPFS(data);
+            // const data = JSON.stringify({
+            //     name: title,
+            //     description,
+            //     image: fileURL
+            // });
+            // console.log('data object', data);
+            // const finalData = await uploadToIPFS(data);
 
 
             console.log('listing price:', price.toString());
@@ -106,7 +106,8 @@ const CreateAsset = () => {
                     NFTByHandContract.abi,
                     provider,
                     'createToken',
-                    [finalData, finalPrice],
+                    // [finalData, finalPrice],
+                    ['https://nftbyhand.com/p01.json', finalPrice],
                     'MarketItemCreated'
                 );
 

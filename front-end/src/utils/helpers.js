@@ -89,6 +89,17 @@ export const errorSweetAlertOptions = ({text}) => {
     }
 }
 
+export const connectWalletSweetAlertOptions = () => {
+    return {
+        icon: 'error',
+        title: 'Connect Wallet',
+        text: 'Connect your wallet first, please.',
+        color: 'white',
+        background: '#1d263b',
+        allowOutsideClick: false
+    }
+}
+
 export const successSweetAlertOptions = ({text}) => {
     return {
         icon: 'success',
@@ -195,10 +206,89 @@ const fingerProduct02 = {
     loyaltyFee: '0'
 };
 
+const fingerProduct03 = {
+    fingerImage: fingerImage01,
+    bigImages: [
+        // main image of the asset
+        bigImage1Product01,
+        bigImage2Product01,
+        bigImage3Product01,
+        bigImage4Product01
+    ],
+    littleImages: [
+        littleImage1Product01,
+        littleImage2Product01,
+        littleImage3Product01,
+        littleImage4Product01
+    ],
+    title: '3Backgammon & Chess Set | Miniature Khatam Marquetry',
+    contractAddress: process.env.REACT_APP_CONTRACT_ADDRESS,
+    tokenId: '3',
+    description: '3The Backgammon & Chess Set is made from Superior Miniature Khatam with Wood, Brass & Camel Bone Inlaying Decorated with Flower & Bird Miniature on the top & Traditional Multi colour Toranj design. The Khatamkari is Glazed & Coated for a Shiny Long-Lasting Finish.',
+    priceWithSymbol: '3 BNB',
+    price: '3',
+    chainSymbol: 'bnb',
+    chain: 'Binance Chain',
+    status: 'In Stock',
+    tokenStandard: 'ERC-721',
+    width: '50 cm',
+    length: '50 cm',
+    height: '5 cm',
+    weight: '3500 grams',
+    material: 'Wood',
+    DetailedMaterial: 'Khatam on Wood on Outside, thin sticks of wood',
+    usages: 'Chess & Backgammon Set, Decorative Crafts, Persian Gift',
+    originate: 'Handmade in Isfahan / Iran',
+    package: 'Chess plate + bag + Backgammon stones',
+    dvUS: '35 to 45 Days',
+    dvEU: '20 to 30 Days',
+    dvAS: '35 to 45 Days',
+    loyaltyFee: '0'
+};
+
+const fingerProduct04 = {
+    fingerImage: fingerImage02,
+    bigImages: [
+        // main image of the asset
+        bigImage1Product02,
+        bigImage2Product02,
+        bigImage3Product02,
+        bigImage4Product02
+    ],
+    littleImages: [
+        littleImage1Product02,
+        littleImage2Product02,
+        littleImage3Product02,
+        littleImage4Product02
+    ],
+    title: '4Backgammon & Chess Set | Miniature Khatam Marquetry',
+    contractAddress: process.env.REACT_APP_CONTRACT_ADDRESS,
+    tokenId: '4',
+    description: '4The Backgammon & Chess Set is made from Superior Miniature Khatam with Wood, Brass & Camel Bone Inlaying Decorated with Flower & Bird Miniature on the top & Traditional Multi colour Toranj design. The Khatamkari is Glazed & Coated for a Shiny Long-Lasting Finish.',
+    priceWithSymbol: '4 BNB',
+    price: '4',
+    chainSymbol: 'bnb',
+    chain: 'Binance Chain',
+    status: 'In Stock',
+    tokenStandard: 'ERC-721',
+    width: '50 cm',
+    length: '50 cm',
+    height: '5 cm',
+    weight: '3500 grams',
+    material: 'Wood',
+    DetailedMaterial: 'Khatam on Wood on Outside, thin sticks of wood',
+    usages: 'Chess & Backgammon Set, Decorative Crafts, Persian Gift',
+    originate: 'Handmade in Isfahan / Iran',
+    package: 'Chess plate + bag + Backgammon stones',
+    dvUS: '35 to 45 Days',
+    dvEU: '20 to 30 Days',
+    dvAS: '35 to 45 Days',
+    loyaltyFee: '0'
+};
 
 
 export const fetchAssetsArray = () => {
     return [
-        fingerProduct01, fingerProduct02
+        fingerProduct01, fingerProduct02, fingerProduct03, fingerProduct04
     ]
 }

@@ -17,49 +17,40 @@ import AssetSingle from "./pages/User/AssetSingle";
 // Admin pages and components
 
 function App() {
-  return (
-      <BrowserRouter>
-        {/*<Auth/>*/}
+    return (
+        <BrowserRouter>
+            {/*<Auth/>*/}
 
-        <Routes>
+            <Routes>
 
-          {/*User routes*/}
-          {/*<Route path="/" element={<Header/>}>*/}
-          {/*  <Route index element={<Home/>}/>*/}
-          {/*  <Route path="/about" element={<Home/>}/>*/}
-          {/*  <Route path="/contact" element={<Home/>}/>*/}
-          {/*  <Route path="/connect-wallet" element={<ConnectWallet/>}/>*/}
-          {/*</Route>*/}
-          {/*<Route element={<React.Fragment><RouteGuard/></React.Fragment>}>*/}
-          {/*  <Route path="/launchpads/list" element={<Explore/>}/>*/}
-          {/*  <Route path="/launchpads/:launchpadContractAddress" element={<AssetSingle/>}/>*/}
-          {/*  <Route path="/launchpads/create" element={<Create/>}/>*/}
-          {/*  <Route path="/profile" element={<Profile/>}/>*/}
-          {/*</Route>*/}
-          <Route path="/" element={<Header/>}>
-            <Route index element={<Home/>}/>
-            <Route path="/explore" element={<Explore/>}/>
-            <Route path="/create" element={<Create/>}/>
-            <Route path="/profile" element={<Profile/>}/>
-            <Route path="/assets/:chainSymbol/:contractAddress/:tokenId" element={<AssetSingle/>}/>
-            <Route path="/contact" element={<Home/>}/>
-            <Route path="/about" element={<Home/>}/>
-            <Route path="/connect-wallet" element={<ConnectWallet/>}/>
-          </Route>
+                {/*User routes*/}
+                <Route path="/" element={<Header/>}>
+                    <Route index element={<Home/>}/>
+                    <Route path="/explore" element={<Explore/>}/>
+                    <Route path="/assets/:chainSymbol/:contractAddress/:tokenId" element={<AssetSingle/>}/>
+                    <Route path="/contact" element={<Home/>}/>
+                    <Route path="/about" element={<Home/>}/>
+                    <Route path="/connect-wallet" element={<ConnectWallet/>}/>
+                </Route>
 
-          {/*Admin routes*/}
-          {/*<Route path="/admin">*/}
-          {/*    <Route index />*/}
-          {/*</Route>*/}
+                <Route element={<React.Fragment><RouteGuard/></React.Fragment>}>
+                    <Route path="/create" element={<Create/>}/>
+                    <Route path="/profile" element={<Profile/>}/>
+                </Route>
 
-          {/*404 Route*/}
-          <Route>
-            <Route path="*" element={<NoPage/>}/>
-          </Route>
+                {/*Admin routes*/}
+                {/*<Route path="/admin">*/}
+                {/*    <Route index />*/}
+                {/*</Route>*/}
 
-        </Routes>
-      </BrowserRouter>
-  );
+                {/*404 Route*/}
+                <Route>
+                    <Route path="*" element={<NoPage/>}/>
+                </Route>
+
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;

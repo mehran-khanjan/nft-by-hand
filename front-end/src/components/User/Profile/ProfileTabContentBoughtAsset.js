@@ -17,21 +17,27 @@ const ProfileTabContentBoughtAsset = () => {
     }, []);
 
     useEffect(() => {
-        if (fetchBoughtAssets) {
-            console.log(fetchBoughtAssets)
-            // const fetchedItem = fetchAssetsArray().filter((item) => {
-            //     return (
-            //         item.chainSymbol === 'bnb' &&
-            //         item.contractAddress === process.env.REACT_APP_CONTRACT_ADDRESS &&
-            //         item.tokenId === tokenId
-            //     )
-            // });
-            // //console.log(fetchedItem);
-            // setBoughtAssets(fetchedItem);
+        console.log('ccc', fetchBoughtAssets)
+        if (fetchBoughtAssets[0] && !(Object.is(fetchBoughtAssets[0][0], null))) {
+            let finalArray = []
+            fetchBoughtAssets.map((arrItem) => {
+                const fetchedItem = fetchAssetsArray().filter((item) => {
+                    return (
+                        item.chainSymbol === 'bnb' &&
+                        item.contractAddress === process.env.REACT_APP_CONTRACT_ADDRESS &&
+                        item.tokenId === arrItem[0].toString()
+                    )
+                });
+                finalArray.push(fetchedItem[0]);
+            })
+
+            setBoughtAssets(finalArray);
+        } else if(!fetchBoughtAssets[0]) {
+            setBoughtAssets([]);
         }
     }, [fetchBoughtAssets]);
 
-    return(
+    return (
         <React.Fragment>
             {/*Loading state*/}
             {boughtAssets && boughtAssets[0] === null &&

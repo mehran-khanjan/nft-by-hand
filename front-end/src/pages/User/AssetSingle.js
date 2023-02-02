@@ -6,10 +6,17 @@ import web3Store from "../../store/web3Store";
 import {setter} from "../../utils/blockchainSetter";
 import NFTByHandContract from "../../blockchain/NFTByHandContract.json";
 import {ethers} from "ethers";
-import {fetchAssetsArray, formatAddress} from "../../utils/helpers";
+import {
+    connectWalletSweetAlertOptions,
+    fetchAssetsArray,
+    formatAddress,
+} from "../../utils/helpers";
 import {Navigate} from 'react-router-dom';
+import Swal from 'sweetalert2'
+import withReactContent from "sweetalert2-react-content";
 
 const {v4: uuidv4} = require('uuid');
+const mySweetAlert = withReactContent(Swal);
 
 const AssetSingle = () => {
     const {chainSymbol, contractAddress, tokenId} = useParams();
@@ -60,6 +67,7 @@ const AssetSingle = () => {
 
         } else {
             console.log('connect wallet first');
+            mySweetAlert.fire(connectWalletSweetAlertOptions());
         }
     }
 
