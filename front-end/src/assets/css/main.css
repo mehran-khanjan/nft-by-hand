@@ -52,8 +52,25 @@ Primary use:	NFT by Hand
 /*==============================
 	Fonts
 ==============================*/
-@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap");
-/*==============================
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins-Regular.woff2') format('woff2'),
+  url('../fonts/Poppins-Regular.woff') format('woff'),
+  url('../fonts/Poppins-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins-Bold.woff2') format('woff2'),
+  url('../fonts/Poppins-Bold.woff') format('woff'),
+  url('../fonts/Poppins-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}/*==============================
 	Common styles
 ==============================*/
 html {
@@ -65,7 +82,7 @@ body {
   height: 100%;
 }
 body {
-  font-family: 'Mulish', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 400;
   background-color: #141a2a;
   -webkit-font-smoothing: antialiased;
