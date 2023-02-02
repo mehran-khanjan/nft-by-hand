@@ -1,8 +1,44 @@
-import {getter} from "../utils/blockchainSetter";
+import {getter, setter} from "../utils/blockchainSetter";
 import NFTByHandContractABI from "../blockchain/NFTByHandContract.json";
 import {ethers} from "ethers";
 import {fetchProfileAssetBlockchainActions} from "./ReduxStore";
 import axios from "axios";
+import {errorSweetAlertOptions, loadingSweetAlertOptions, successSweetAlertOptions} from "../utils/helpers";
+import NFTByHandContract from "../blockchain/NFTByHandContract.json";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content';
+
+const mySweetAlert = withReactContent(Swal);
+
+export const buyAssetBlockchain = ({provider, tokenId, price}) => {
+    return async (dispatch) => {
+        mySweetAlert.fire(loadingSweetAlertOptions);
+
+        console.log('token Id is: ', tokenId);
+        console.log('price is: ', price);
+
+        try {
+            const {receipt, issuedEvents} = await setter(
+                process.env.REACT_APP_CONTRACT_ADDRESS,
+                NFTByHandContract.abi,
+                provider,
+                'createMarketSale',
+                [tokenId, {value: ethers.utils.parseEther(price)}],
+                'unknown'
+            );
+
+            const sweetAlertOptions = successSweetAlertOptions({
+                text: 'You bought this physical NFT. Please contact us to receive your asset.'
+            });
+            mySweetAlert.fire(sweetAlertOptions);
+
+        } catch (e) {
+            // console.log(e);
+            const sweetAlertOptions = errorSweetAlertOptions({text: 'Error! Something went wrong.'});
+            mySweetAlert.fire(sweetAlertOptions);
+        }
+    }
+}
 
 export const getProfileAssetBlockchain = ({provider, method}) => {
     return async (dispatch) => {
@@ -44,7 +80,7 @@ export const getProfileAssetBlockchain = ({provider, method}) => {
             //         fullAssetArray.push({});
             //     }
             // } else {
-                dispatch(fetchProfileAssetBlockchainActions.setProfileAsset(profileAssets));
+            dispatch(fetchProfileAssetBlockchainActions.setProfileAsset(profileAssets));
             // }
 
 

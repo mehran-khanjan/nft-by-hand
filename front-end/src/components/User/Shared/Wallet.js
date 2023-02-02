@@ -2,6 +2,11 @@ import React, {useState, useEffect} from 'react';
 import {ethers} from "ethers";
 import useWeb3Store from "../../../store/web3Store";
 import {useNavigate} from 'react-router-dom';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content';
+import {errorSweetAlertOptions} from "../../../utils/helpers";
+
+const mySweetAlert = withReactContent(Swal);
 
 const Wallet = (props) => {
     const setProvider = useWeb3Store(state => state.setProvider);
@@ -17,6 +22,42 @@ const Wallet = (props) => {
         }
     }, [publicAddress]);
 
+    useEffect(() => {
+
+        // it creates a loop
+        // window.ethereum.on("connect", () => {
+        //     window.location.reload();
+        // });
+        //
+        // window.ethereum.on("disconnect", () => {
+        //     window.location.reload();
+        // });
+
+        window.ethereum.on("chainChanged", () => {
+            window.location.reload();
+        });
+
+        window.ethereum.on("accountsChanged", () => {
+            window.location.reload();
+        });
+
+        // window.ethereum.addEventListener('chainChanged', () => {
+        //     window.location.reload();
+        // });
+        // window.ethereum.addEventListener('accountsChanged', () => {
+        //     window.location.reload();
+        // });
+        //
+        // return () => {
+        //     window.removeEventListener("chainChanged", () => {
+        //
+        //     });
+        //     window.removeEventListener("accountsChanged", () => {
+        //
+        //     });
+        // };
+    });
+
     function trimText(txt) {
         const begin = txt.substring(0, 5);
         const finish = txt.substr(38);
@@ -26,23 +67,55 @@ const Wallet = (props) => {
     const onClickHandler = async (e) => {
         e.preventDefault();
 
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        await provider.send("eth_requestAccounts", []);
-        setProvider(provider);
+        if (window.ethereum) {
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            await provider.send("eth_requestAccounts", []);
 
-        const firstPublicAddress = await provider.getSigner().getAddress();
-        setPublicAddress(firstPublicAddress);
+            const firstPublicAddress = await provider.getSigner().getAddress();
 
-        const {chainId} = await provider.getNetwork();
-        setNetworkId(chainId);
+            const {chainId} = await provider.getNetwork();
+            if (chainId.toString() !== process.env.REACT_APP_CHAIN_ID) {
+                const sweetAlertOptions = errorSweetAlertOptions({
+                    text: 'Wrong Network! Please switch to Binance chain network'
+                });
+                mySweetAlert.fire(sweetAlertOptions);
 
-        if (props.prevRoute) {
-            console.log('aa', props.prevRoute);
-            return navigate(props.prevRoute);
+                // send switch network request
+                // window.ethereum.request({
+                //     method: "wallet_addEthereumChain",
+                //     params: [{
+                //         chainId: "0x89",
+                //         rpcUrls: ["https://rpc-mainnet.matic.network/"],
+                //         chainName: "Matic Mainnet",
+                //         nativeCurrency: {
+                //             name: "MATIC",
+                //             symbol: "MATIC",
+                //             decimals: 18
+                //         },
+                //         blockExplorerUrls: ["https://polygonscan.com/"]
+                //     }]
+                // });
+            } else {
+                setProvider(provider);
+                setPublicAddress(firstPublicAddress);
+                setNetworkId(chainId);
+
+                if (props.prevRoute) {
+                    console.log('aa', props.prevRoute);
+                    return navigate(props.prevRoute);
+                }
+
+            }
+        } else {
+            const sweetAlertOptions = errorSweetAlertOptions({
+                text: 'No wallet found! Please install Metamask wallet and try again.'
+            });
+            mySweetAlert.fire(sweetAlertOptions);
         }
+
     }
 
-    return(
+    return (
         <React.Fragment>
             {/*wallet*/}
             <a href="#" className="header__cta open-modal" onClick={onClickHandler}>

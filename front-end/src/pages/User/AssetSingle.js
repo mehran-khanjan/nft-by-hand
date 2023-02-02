@@ -14,6 +14,7 @@ import {
 import {Navigate} from 'react-router-dom';
 import Swal from 'sweetalert2'
 import withReactContent from "sweetalert2-react-content";
+import {buyAssetBlockchain} from "../../store/AssetThunk";
 
 const {v4: uuidv4} = require('uuid');
 const mySweetAlert = withReactContent(Swal);
@@ -50,21 +51,7 @@ const AssetSingle = () => {
         e.preventDefault();
 
         if (provider && assetSingleItem) {
-            const {
-                receipt,
-                issuedEvents
-            } = await setter(
-                process.env.REACT_APP_CONTRACT_ADDRESS,
-                NFTByHandContract.abi,
-                provider,
-                'createMarketSale',
-                [tokenId, {value: ethers.utils.parseEther(assetSingleItem[0].price)}],
-                'unknown'
-            );
-
-            console.log('issued events', issuedEvents);
-            console.log('receipt', receipt);
-
+            dispatch(buyAssetBlockchain({provider, tokenId, price: assetSingleItem[0].price}));
         } else {
             console.log('connect wallet first');
             mySweetAlert.fire(connectWalletSweetAlertOptions());
