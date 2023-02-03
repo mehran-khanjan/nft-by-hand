@@ -33,13 +33,15 @@ const Wallet = (props) => {
         //     window.location.reload();
         // });
 
-        window.ethereum.on("chainChanged", () => {
-            window.location.reload();
-        });
+        if(window.ethereum) {
+            window.ethereum.on("chainChanged", () => {
+                window.location.reload();
+            });
 
-        window.ethereum.on("accountsChanged", () => {
-            window.location.reload();
-        });
+            window.ethereum.on("accountsChanged", () => {
+                window.location.reload();
+            });
+        }
 
         // window.ethereum.addEventListener('chainChanged', () => {
         //     window.location.reload();
