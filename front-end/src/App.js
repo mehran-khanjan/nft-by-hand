@@ -12,7 +12,7 @@ import NoPage from "./pages/Shared/NoPage";
 import Header from "./components/User/Shared/Header";
 import RouteGuard from "./components/User/Shared/RouteGaurd";
 import Auth from "./components/User/Shared/Auth";
-import AssetSingle from "./pages/User/AssetSingle";
+import Single from "./pages/User/Single";
 
 // Admin pages and components
 
@@ -27,7 +27,7 @@ function App() {
                 <Route path="/" element={<Header/>}>
                     <Route index element={<Home/>}/>
                     <Route path="/explore" element={<Explore/>}/>
-                    <Route path="/assets/:chainSymbol/:contractAddress/:tokenId" element={<AssetSingle/>}/>
+                    <Route path="/assets/:chainSymbol/:contractAddress/:tokenId" element={<Single/>}/>
                     <Route path="/contact" element={<Home/>}/>
                     <Route path="/about" element={<Home/>}/>
                     <Route path="/connect-wallet" element={<ConnectWallet/>}/>

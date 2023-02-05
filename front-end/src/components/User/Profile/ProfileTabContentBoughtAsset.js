@@ -17,6 +17,7 @@ const ProfileTabContentBoughtAsset = () => {
     }, []);
 
     useEffect(() => {
+        console.log('aaa', fetchBoughtAssets);
 
         if (fetchBoughtAssets[0] && !(Object.is(fetchBoughtAssets[0][0], null))) {
             let finalArray = []

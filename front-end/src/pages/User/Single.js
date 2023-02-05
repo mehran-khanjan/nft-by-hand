@@ -19,7 +19,7 @@ import {buyAssetBlockchain} from "../../store/AssetThunk";
 const {v4: uuidv4} = require('uuid');
 const mySweetAlert = withReactContent(Swal);
 
-const AssetSingle = () => {
+const Single = () => {
     const {chainSymbol, contractAddress, tokenId} = useParams();
     const provider = web3Store(state => state.web3);
     const dispatch = useDispatch();
@@ -216,10 +216,20 @@ const AssetSingle = () => {
                                     <h3>Current price</h3>
                                     <p>{assetSingleItem[0].priceWithSymbol}</p>
                                     <form style={{width: '100%'}} onSubmit={onFormSubmitHandle}>
-                                        <button type="submit" className="form__btn form__btn--small"
-                                                style={{width: '100%', backgroundColor: 'rgba(170,114,206,0.12)'}}>
-                                            Buy Physical NFT
-                                        </button>
+
+                                        {
+                                            assetSingleItem[0].status === 'Out of Stock' ?
+                                                <p>Out of Stock</p>
+                                                :
+                                                <button type="submit" className="form__btn form__btn--small"
+                                                        style={{
+                                                            width: '100%',
+                                                            backgroundColor: 'rgba(170,114,206,0.12)'
+                                                        }}>
+                                                    Buy Physical NFT
+                                                </button>
+                                        }
+
                                     </form>
 
                                 </div>
@@ -280,6 +290,10 @@ const AssetSingle = () => {
                                     <tr>
                                         <td>Asia & Australia</td>
                                         <td>{assetSingleItem[0].dvAS}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shipping Cost</td>
+                                        <td>Not Included</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -358,4 +372,4 @@ const AssetSingle = () => {
     )
 }
 
-export default AssetSingle;
+export default Single;
