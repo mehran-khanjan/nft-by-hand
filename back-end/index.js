@@ -56,7 +56,7 @@ app.use(notFoundErrorRouter);
 
 app.listen(process.env.PORT, () => {
     console.log('App is ready to use.');
-});
+})
 
 // mongoose
 //     .connect(process.env.MONGODB_CONNECT_STRING)
