@@ -107,7 +107,7 @@ const CreateAsset = () => {
                     provider,
                     'createToken',
                     // [finalData, finalPrice],
-                    ['https://nftbyhand.com/p01.json', finalPrice],
+                    ['https://nftbyhand.com/p02.json', finalPrice],
                     'MarketItemCreated'
                 );
 
