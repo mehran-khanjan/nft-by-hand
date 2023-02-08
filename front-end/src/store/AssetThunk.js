@@ -3,7 +3,11 @@ import NFTByHandContractABI from "../blockchain/NFTByHandContract.json";
 import {ethers} from "ethers";
 import {fetchProfileAssetBlockchainActions} from "./ReduxStore";
 import axios from "axios";
-import {errorSweetAlertOptions, loadingSweetAlertOptions, successSweetAlertOptions} from "../utils/helpers";
+import {
+    errorSweetAlertOptions,
+    loadingSweetAlertOptions,
+    successSweetAlertOptions
+} from "../utils/helpers";
 import NFTByHandContract from "../blockchain/NFTByHandContract.json";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content';

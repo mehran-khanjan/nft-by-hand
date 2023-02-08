@@ -173,7 +173,7 @@ export const presaleStatus = (currentStatus) => {
     }
 }
 
-const fingerProduct01 = {
+let fingerProduct01 = {
     fingerImage: fingerImage01,
     bigImages: [
         // main image of the asset
@@ -213,7 +213,7 @@ const fingerProduct01 = {
     loyaltyFee: '0'
 };
 
-const fingerProduct02 = {
+let fingerProduct02 = {
     fingerImage: fingerImage02,
     bigImages: [
         // main image of the asset
@@ -253,7 +253,7 @@ const fingerProduct02 = {
     loyaltyFee: '0'
 };
 
-const fingerProduct03 = {
+let fingerProduct03 = {
     fingerImage: fingerImage03,
     bigImages: [
         // main image of the asset
@@ -293,7 +293,7 @@ const fingerProduct03 = {
     loyaltyFee: '0'
 };
 
-const fingerProduct04 = {
+let fingerProduct04 = {
     fingerImage: fingerImage04,
     bigImages: [
         // main image of the asset
@@ -333,7 +333,7 @@ const fingerProduct04 = {
     loyaltyFee: '0'
 };
 
-const fingerProduct05 = {
+let fingerProduct05 = {
     fingerImage: fingerImage05,
     bigImages: [
         // main image of the asset
@@ -373,7 +373,7 @@ const fingerProduct05 = {
     loyaltyFee: '0'
 };
 
-const fingerProduct06 = {
+let fingerProduct06 = {
     fingerImage: fingerImage06,
     bigImages: [
         // main image of the asset
@@ -413,7 +413,7 @@ const fingerProduct06 = {
     loyaltyFee: '0'
 };
 
-const fingerProduct07 = {
+let fingerProduct07 = {
     fingerImage: fingerImage07,
     bigImages: [
         // main image of the asset
@@ -458,4 +458,12 @@ export const fetchAssetsArray = () => {
         fingerProduct01, fingerProduct02, fingerProduct03, fingerProduct04,
         fingerProduct05, fingerProduct06, fingerProduct07
     ]
+}
+
+export const updateStatus = (tokenId) => {
+    console.log('single product1', fingerProduct01.status);
+    let singleProduct = `fingerProduct0${tokenId}`;
+    let finalSingleProduct = eval(singleProduct);
+    finalSingleProduct.status = 'Out of Stock';
+    console.log('single product2', fingerProduct01.status);
 }
