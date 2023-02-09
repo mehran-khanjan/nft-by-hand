@@ -9,6 +9,7 @@ import {ethers} from "ethers";
 import {Buffer} from 'buffer';
 import {setter} from "../../../utils/blockchainSetter";
 import NFTByHandContract from '../../../blockchain/NFTByHandContract.json';
+import {Link} from "react-router-dom";
 
 
 const mySweetAlert = withReactContent(Swal);
@@ -140,7 +141,7 @@ const CreateAsset = () => {
                             {/*breadcrumb*/}
                             <div className="col-12">
                                 <ul className="breadcrumb">
-                                    <li className="breadcrumb__item"><a href="index.html">Home</a></li>
+                                    <li className="breadcrumb__item"><Link to="/">Home</Link></li>
                                     <li className="breadcrumb__item breadcrumb__item--active">Create a new NFT</li>
                                 </ul>
                             </div>

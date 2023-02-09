@@ -13,6 +13,7 @@ import Header from "./components/User/Shared/Header";
 import RouteGuard from "./components/User/Shared/RouteGaurd";
 import Auth from "./components/User/Shared/Auth";
 import Single from "./pages/User/Single";
+import Contact from "./pages/User/Contact";
 
 // Admin pages and components
 
@@ -28,7 +29,7 @@ function App() {
                     <Route index element={<Home/>}/>
                     <Route path="/explore" element={<Explore/>}/>
                     <Route path="/assets/:chainSymbol/:contractAddress/:tokenId" element={<Single/>}/>
-                    <Route path="/contact" element={<Home/>}/>
+                    <Route path="/contact" element={<Contact/>}/>
                     <Route path="/about" element={<Home/>}/>
                     <Route path="/connect-wallet" element={<ConnectWallet/>}/>
                 </Route>
