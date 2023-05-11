@@ -47,8 +47,7 @@ function App() {
                 {/*404 Route*/}
                 <Route>
                     <Route path="*" element={<NoPage/>}/>
-                </Route>
-
+                </Route>                
             </Routes>
         </BrowserRouter>
     );
